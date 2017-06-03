@@ -4,6 +4,9 @@ require 'json'
 require 'yaml/store'
 require 'net/http'
 require 'uri'
+require 'dotenv'
+
+Dotenv.load(File.expand_path File.dirname(__FILE__)+"/.env")
 
 $client = Mysql2::Client.new(:default_file => '/etc/mysql/debian.cnf', :database => 'securityonion_db')
 
@@ -32,7 +35,8 @@ def write_sensors
 end
 
 def post_data(new_event)
-	uri = URI('http://192.168.2.204:3000/events')
+	server_uri = ENV["server_uri"]
+	uri = URI("#{server_uri}/events")
 	http = Net::HTTP.new(uri.host, uri.port)
 	req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
 	req.body = new_event.to_json 
@@ -56,10 +60,8 @@ while(true)
 	$sensors.each do |key, value| 
 		new_events = get_events($client, key, value)
 		new_events.each do |event|
-			#post_data(event)
-			puts event.to_s
+			post_data(event)
 		end
 	end
 	write_sensors
 end
-

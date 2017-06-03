@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 	spec.email = ["mail@mail.com"]
 	spec.summary = %q{This is an agent that monitors the sguil db and pushes new events to a rest service.}
 	spec.description = %q{This is an agent that monitors the sguil db and pushes new events to a rest service.}
-	spec.homepage = "http://google.com"
+	spec.homepage = "http://github.com/akoblentz/sguil"
 	spec.license = "MIT"
 	
 	spec.files = ['lib/sguil_monitor.rb']
