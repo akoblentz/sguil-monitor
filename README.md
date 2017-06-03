@@ -24,5 +24,5 @@ On an ubuntu system, like SecurityOnion with upstart, copy the `sguil-monitor.co
 
 The service can be controlled with standard upstart commands:
 `service sguil-monitor command`
-The service should start and stop in lockstep with the mysql service.
+The service should start and stop in lockstep with the mysql service, it is also set to auto respawn forever in case of crash.
 
