@@ -19,4 +19,10 @@ Dotenv is being used to manage the `SERVER_URI` env variable that maps to the sg
 This application is currently in development mode, not suitable for production as-is. This application needs the URL for the paired api-server. You can set the URL in the `SERVER_URI` environment variable in the `.env` file in the `lib` directory.
 
 * Deployment instructions
+Copy this entire directory to the `/var/run` directory.
+On an ubuntu system, like SecurityOnion with upstart, copy the `sguil-monitor.conf` file to the `/etc/init` directory.
+
+The service can be controlled with standard upstart commands:
+`service sguil-monitor command`
+The service should start and stop in lockstep with the mysql service.
 

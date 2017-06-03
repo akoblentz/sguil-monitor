@@ -35,11 +35,11 @@ def write_sensors
 end
 
 def post_data(new_event)
-	server_uri = ENV["server_uri"]
+	server_uri = ENV["SERVER_URI"]
 	uri = URI("#{server_uri}/events")
 	http = Net::HTTP.new(uri.host, uri.port)
 	req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
-	req.body = new_event.to_json 
+	req.body = new_event.to_json
 	res = http.request(req)
 end
 
